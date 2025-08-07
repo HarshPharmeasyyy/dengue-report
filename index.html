@@ -746,10 +746,14 @@
         
 
         
+       @media(max-width:480px) {
+            .hero-section{
+                display: inline ;
+                /* height: 100vh; */
+            }
+        }
        
        
-       
-        
         @media(max-width:768px) {
             
             .action-grid, .charts-grid, .storm-cards-container { grid-template-columns: 1fr; }
@@ -804,10 +808,23 @@
         .hamburger-menu {
             display: none;
         }
+        @media(max-width: 1024px) {
+            #hero{
+                top: 25px !important;
+            }
+            .hero-section{
+                        display: inline-block !important;
+        position: unset !important;
+        padding-top: 11%;
+        padding-bottom: 11% !important;
+        min-height: auto !important;
+            }
+        }
+
 
         #hero {
             background: #f0fdfa;
-/*             top: -45; */
+            top: -45;
         }
 
         @media(max-width:900px) {
@@ -1602,6 +1619,9 @@
 
             .toc-sticky {
                 display: none
+            }
+            .share-bar{
+                display: none;
             }
 
             @media (min-width: 640px) {
