@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dengue-digests</title>
-    <meta name="description" content="Dengue detailed report">
-    <meta name="author" content="Pharmeasy">
+    <title>PharmEasy Dengue Research Report</title>
+    <meta name="description" content="Pharmeasy Dengue Research Report - A comprehensive analysis of dengue trends, demographics, symptoms, and prevention strategies.">
+    <meta name="author" content="PharmEasy">
+    <meta name="keywords" content="Dengue, Research, Report, PharmEasy, Health, Monsoon, Demographics, Symptoms, Prevention">
+    <meta property="og:title" content="Dengue Research">
+    <meta property="og:description" content="Pharmeasy Dengue Research Report">
+    <meta property="og:type" content="website">
     <meta name="robots" content="noindex, nofollow">
 
-    <meta property="og:title" content="dengue-digests">
-    <meta property="og:description" content="A Detailed report on Dengue">
-    <meta property="og:type" content="website">
-<!--  -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -299,6 +299,243 @@
          
     </script>
     <style type="text/css">
+
+.zoomable-image {
+  cursor: pointer;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80vh; /* Limit height to viewport height */
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Share options container */
+.share-options {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Add some basic animation for the modal */
+.modal-content, #shareOptions {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* .share-button {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.facebook-button {
+  background-color: #3b5998;
+}
+.facebook-button:hover {
+  background-color: #2d4373;
+}
+
+.twitter-button {
+  background-color: #1da1f2;
+}
+.twitter-button:hover {
+  background-color: #0c85d0;
+}
+
+.linkedin-button {
+  background-color: #0077b5;
+}
+.linkedin-button:hover {
+  background-color: #005582;
+}
+
+.pinterest-button {
+  background-color: #bd081c;
+}
+.pinterest-button:hover {
+  background-color: #8c0615;
+} */
+
+/* Style for the share icons */
+.share-options {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Add some basic animation for the modal */
+        .modal-content, #shareOptions {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {-webkit-transform:scale(0)}
+            to {-webkit-transform:scale(1)}
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        /* Style for the share icons */
+        .share-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px; /* Define a consistent clickable area */
+  height: 35px;
+  margin: 0 8px; /* Slightly more horizontal space between icons */
+  border-radius: 50%; /* Still useful for a subtle hover effect if we add one */
+  text-decoration: none;
+  /* REMOVED: background-color: ... */
+  /* REMOVED: color: white; */
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  overflow: hidden; /* Ensures any overflow from scaling is hidden */
+}
+
+/* Style the icon (the <i> element) directly */
+.share-icon i {
+  font-size: 1.8em; /* Make the icons larger to fill the space */
+  line-height: 1; /* Ensures vertical alignment */
+  vertical-align: middle; /* Better centering for some icons */
+  /* The color will be set by the specific classes below */
+  transition: color 0.2s ease-in-out; /* Smooth color transition on hover */
+}
+
+.share-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  opacity: 0.8; /* Subtle transparency on hover */
+}
+
+/* Specific colors for each social media icon */
+/* These colors now apply directly to the 'i' element (the icon itself) */
+.fa-facebook { color: #3b5998; }
+.fa-x-twitter { color: #fff; }
+.fa-linkedin { color: #0077b5; }
+.fa-pinterest { color: #bd081c; }
+.fa-whatsapp { color: #25d366; }
+.fa-reddit { color: #ff4500; }
+
+/* Optional: Add a subtle background on hover to give them more presence */
+.share-icon.fa-facebook:hover { background-color: rgba(59, 89, 152, 0.2); } /* Faint background matching brand color */
+.share-icon.fa-twitter:hover { background-color: rgba(29, 161, 242, 0.2); }
+.share-icon.fa-linkedin:hover { background-color: rgba(0, 119, 181, 0.2); }
+.share-icon.fa-pinterest:hover { background-color: rgba(189, 8, 28, 0.2); }
+.share-icon.fa-whatsapp:hover { background-color: rgba(37, 211, 102, 0.2); }
+.share-icon.fa-reddit:hover { background-color: rgba(255, 69, 0, 0.2); }
+
+.referrences-header {
+            text-align: center;
+            margin-bottom: .5rem;
+            margin-top: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .references-title {
+            font-size: 2.25rem;
+            margin-top: 1rem
+        }
+
+        @media(max-width:768px) {
+            
+            .references-title {
+                font-size: 1.8rem
+            }
+
+           
+        }
+         .references-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(32, 39, 44, 0.05);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 1.2rem;
+            transition: transform .3s ease, box-shadow .3s ease;
+            overflow: hidden
+        }
+
+        .references-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 35px rgba(32, 39, 44, 0.08)
+        }
+
+        .references-card-content {
+            padding: 1.5rem
+        }
+
+        
+
+         .references-prose p {
+            margin-bottom: 1.25rem;
+            color: #5f6f7b;
+            font-size: 1.1rem;
+            line-height: 1.8
+        }
+
+        .references-prose p:last-child {
+            margin-bottom: 0
+        }
+
         .toc-bar {
             height: 80%;
             width: 18rem;
@@ -5373,11 +5610,12 @@
 
             <div class="share-bar hidden lg:flex"><button
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 w-10 h-10 p-0 bg-green-500 hover:bg-green-600 text-white"
-                    title="Share on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-message-circle h-4 w-4">
-                        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-                    </svg></button><button
+                    title="Share on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg>
+
+
+</button><button
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 w-10 h-10 p-0 bg-blue-600 hover:bg-blue-700 text-white"
                     title="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -5393,15 +5631,10 @@
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg></button><button
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 w-10 h-10 p-0 bg-orange-500 hover:bg-orange-600 text-white"
-                    title="Share on Reddit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-share2 h-4 w-4">
-                        <circle cx="18" cy="5" r="3"></circle>
-                        <circle cx="6" cy="12" r="3"></circle>
-                        <circle cx="18" cy="19" r="3"></circle>
-                        <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
-                        <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
-                    </svg></button><button
+                    title="Share on Reddit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reddit" viewBox="0 0 16 16">
+  <path d="M6.167 8a.83.83 0 0 0-.83.83c0 .459.372.84.83.831a.831.831 0 0 0 0-1.661m1.843 3.647c.315 0 1.403-.038 1.976-.611a.23.23 0 0 0 0-.306.213.213 0 0 0-.306 0c-.353.363-1.126.487-1.67.487-.545 0-1.308-.124-1.671-.487a.213.213 0 0 0-.306 0 .213.213 0 0 0 0 .306c.564.563 1.652.61 1.977.61zm.992-2.807c0 .458.373.83.831.83s.83-.381.83-.83a.831.831 0 0 0-1.66 0z"/>
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.828-1.165c-.315 0-.602.124-.812.325-.801-.573-1.9-.945-3.121-.993l.534-2.501 1.738.372a.83.83 0 1 0 .83-.869.83.83 0 0 0-.744.468l-1.938-.41a.2.2 0 0 0-.153.028.2.2 0 0 0-.086.134l-.592 2.788c-1.24.038-2.358.41-3.17.992-.21-.2-.496-.324-.81-.324a1.163 1.163 0 0 0-.478 2.224q-.03.17-.029.353c0 1.795 2.091 3.256 4.669 3.256s4.668-1.451 4.668-3.256c0-.114-.01-.238-.029-.353.401-.181.688-.592.688-1.069 0-.65-.525-1.165-1.165-1.165"/>
+</svg></button><button
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 w-10 h-10 p-0 bg-blue-500 hover:bg-blue-600 text-white"
                     title="Share on Telegram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -5412,6 +5645,12 @@
                         <path d="m21.854 2.147-10.94 10.939"></path>
                     </svg></button></div>
             <main class="section-snap">
+                <div id="imageModal" class="modal">
+  <span class="close-button">&times;</span>
+  <img class="modal-content" id="zoomedImage">
+  <div class="share-options" id="shareOptions">
+    </div>
+</div>
 
                 <section id="hero" class="hero-section">
 
@@ -5627,12 +5866,12 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col space-y-6 fade-in-up">
-                                    <div class="bg-white rounded-lg shadow-medium p-4 sm:p-6 flex-1"><img
+                                    <div class="bg-white rounded-lg shadow-medium p-4 sm:p-6 flex-1 "><img
                                             src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_Page02_Graph01.webp"
-                                            alt="Tests Done for the 26 months" class="w-full rounded-lg"></div>
+                                            alt="Tests Done for the 26 months" class="w-full rounded-lg zoomable-image"></div>
                                     <div class="bg-white rounded-lg shadow-medium p-4 sm:p-6 flex-1"><img
                                             src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_Page02_Graph02.webp"
-                                            alt="Tests Done Vs Positivity Rate" class="w-full rounded-lg"></div>
+                                            alt="Tests Done Vs Positivity Rate" class="w-full rounded-lg zoomable-image"></div>
                                 </div>
                             </div>
                         </div>
@@ -5708,7 +5947,7 @@
                                         class="bg-white rounded-lg shadow-medium p-6 flex-1 flex items-center justify-center">
                                         <img src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_MosquittoLifeCycle_01.webp"
                                             alt="Infographic of how monsoon links to dengue"
-                                            class="w-full h-auto max-h-full object-contain rounded-lg">
+                                            class="w-full h-auto max-h-full object-contain rounded-lg zoomable-image">
                                     </div>
                                 </div>
                             </div>
@@ -5827,7 +6066,7 @@
                                         class="bg-white rounded-lg shadow-medium p-6 flex-1 flex items-center justify-center">
                                         <img src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_WhoIsAtMostRisk_01.webp"
                                             alt="Who is at most risk infographic"
-                                            class="w-full h-auto max-h-full object-contain rounded-lg">
+                                            class="w-full h-auto max-h-full object-contain rounded-lg zoomable-image">
                                     </div>
                                 </div>
                             </div>
@@ -5898,43 +6137,6 @@
                         </div>
                     </div>
                     <div class="slider-wrapper">
-                        <!-- Slide 1: Gender Divide -->
-                        <div class="slider-slide">
-                            <div class="insight-block">
-                                <h3>The Gender Divide: Men Under 50</h3>
-                                <div class="prose">
-                                    <p>Our analysis of PharmEasy Labs data reveals clear patterns. Overall, men are more likely to test positive for dengue than women, especially those under 50. These findings align with Indian studies that say younger men get more infections and serious illnesses because they spend more time outside or have jobs that expose them to more risks.</p>
-                                </div>
-                                <div class="charts-grid">
-                                    <div class="chart-container">
-                                         <!-- <img src="https://pharmeasy.in/blog/dengue/Graph-01.webp" alt="Positivity Rate by Gender" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
-                                          <img src="https://pharmeasy.in/blog/dengue/Graph-02.webp" alt="Platelet Count by Gender" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
-                                    </div>
-                                    <div class="chart-container">
-                                         <!-- <img src="https://pharmeasy.in/blog/dengue/Graph-02.webp" alt="Platelet Count by Gender" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
-                                          <img src="https://pharmeasy.in/blog/dengue/GRAPH_04.webp" alt="Positivity Rate by Age > 50" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Slide 2: Vulnerability Shift -->
-                        <div class="slider-slide">
-                            <div class="insight-block">
-                                <h3>The Vulnerability Shift: Women Over 50</h3>
-                                <div class="prose">
-                                    <p>However, in those over 50, females have a higher positivity rate than males and show greater disease severity. Our lab data indicates that women over 50 not only test positive more often but also experience more severe platelet depletion. This includes significantly higher rates in the "Emergency," "High Risk," and "Risky" platelet count categories.</p>
-                                </div>
-                                 <div class="charts-grid">
-                                    <div class="chart-container">
-                                         <!-- <img src="https://pharmeasy.in/blog/dengue/GRAPH_04.webp" alt="Positivity Rate by Age > 50" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
-                                          <img src="https://pharmeasy.in/blog/dengue/Graph-03.webp" alt="Platelet Count by Age" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
-                                    </div>
-                                    <div class="chart-container">
-                                         <img src="https://pharmeasy.in/blog/dengue/GRAPH_05.webp" alt="Platelet Risk by Gender over 50" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Slide 3: Clinical Insights -->
                         <div class="slider-slide">
                              <div class="insight-block">
@@ -5945,14 +6147,53 @@
                                  <div class="charts-grid">
                                     <div class="chart-container">
                                          <!-- <img src="https://pharmeasy.in/blog/dengue/Graph-03.webp" alt="Platelet Count by Age" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
-                                          <img src="https://pharmeasy.in/blog/dengue/Graph-01.webp" alt="Positivity Rate by Gender" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
+                                          <img src="https://pharmeasy.in/blog/dengue/Graph-01.webp" alt="Positivity Rate by Gender" class="responsive-image zoomable-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
                                     </div>
                                     <div class="chart-container">
-                                         <img src="https://pharmeasy.in/blog/dengue/Graph-01.webp" alt="Platelet Risk by Age" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
+                                         <img src="https://pharmeasy.in/blog/dengue/TABLE_01.webp" alt="Platelet Risk by Age" class="responsive-image zoomable-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Slide 2: Vulnerability Shift -->
+                        <div class="slider-slide">
+                            <div class="insight-block">
+                                <h3>The Vulnerability Shift: Women Over 50</h3>
+                                <div class="prose">
+                                    <p>However, in those over 50, females have a higher positivity rate than males and show greater disease severity. Our lab data indicates that women over 50 not only test positive more often but also experience more severe platelet depletion. This includes significantly higher rates in the "Emergency," "High Risk," and "Risky" platelet count categories.</p>
+                                </div>
+                                 <div class="charts-grid">
+                                    <div class="chart-container">
+                                         <!-- <img src="https://pharmeasy.in/blog/dengue/GRAPH_04.webp" alt="Positivity Rate by Age > 50" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
+                                          <img src="https://pharmeasy.in/blog/dengue/Graph-03.webp" alt="Platelet Count by Age" class="responsive-image zoomable-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
+                                    </div>
+                                    <div class="chart-container">
+                                         <img src="https://pharmeasy.in/blog/dengue/GRAPH_05.webp" alt="Platelet Risk by Gender over 50" class="responsive-image zoomable-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 1: Gender Divide -->
+                        <div class="slider-slide">
+                            <div class="insight-block">
+                                <h3>The Gender Divide: Men Under 50</h3>
+                                <div class="prose">
+                                    <p>Our analysis of PharmEasy Labs data reveals clear patterns. Overall, men are more likely to test positive for dengue than women, especially those under 50. These findings align with Indian studies that say younger men get more infections and serious illnesses because they spend more time outside or have jobs that expose them to more risks.</p>
+                                </div>
+                                <div class="charts-grid">
+                                    <div class="chart-container">
+                                         <!-- <img src="https://pharmeasy.in/blog/dengue/Graph-01.webp" alt="Positivity Rate by Gender" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
+                                          <img src="https://pharmeasy.in/blog/dengue/Graph-02.webp" alt="Platelet Count by Gender" class="responsive-image zoomable-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
+                                    </div>
+                                    <div class="chart-container">
+                                         <!-- <img src="https://pharmeasy.in/blog/dengue/Graph-02.webp" alt="Platelet Count by Gender" class="responsive-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';"> -->
+                                          <img src="https://pharmeasy.in/blog/dengue/GRAPH_04.webp" alt="Positivity Rate by Age > 50" class="responsive-image zoomable-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0fdfa/059669?text=Chart+Not+Available';">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <!-- Slide 4: Age Factor -->
                         
                     </div>
@@ -6088,7 +6329,7 @@
                                 <div class="fade-in-up"><img
                                         src="https://pharmeasy.in/blog/dengue/THINK-IT-COULD-BE-DENGUE.webp"
                                         alt="Think it could be dengue symptoms guide"
-                                        class="w-full rounded-lg shadow-medium"></div>
+                                        class="w-full rounded-lg shadow-medium zoomable-image"></div>
                             </div>
                             <div class="mt-12 fade-in-up">
                                 <div class="section-card">
@@ -6294,7 +6535,7 @@
                                 <div class="fade-in-up"><img
                                         src="https://pharmeasy.in/blog/dengue/DengueStudy_IndiaMap.webp"
                                         alt="State wise dengue data across India"
-                                        class="w-full rounded-lg shadow-medium"></div>
+                                        class="w-full rounded-lg shadow-medium zoomable-image"></div>
                             </div>
                             <div class="mt-16 fade-in-up">
                                 <div class="grid md:grid-cols-4 gap-6">
@@ -6426,10 +6667,10 @@
                                             <div class="grid lg:grid-cols-2 gap-8"><img
                                                     src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_Page8_GoogleTrendsdata.webp"
                                                     alt="Google trends data for dengue searches"
-                                                    class="w-full rounded-lg shadow-medium"><img
+                                                    class="w-full rounded-lg shadow-medium zoomable-image"><img
                                                     src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_DengueCasesTrend.webp"
                                                     alt="Dengue cases trend analysis"
-                                                    class="w-full rounded-lg shadow-medium"></div>
+                                                    class="w-full rounded-lg shadow-medium zoomable-image"></div>
                                             <p class="text-lg leading-relaxed">We also looked at Google search trends,
                                                 and the searches for "dengue" rose sharply during the same months. This
                                                 shows a strong link between real cases and public concern. Other causes
@@ -6437,7 +6678,7 @@
                                                 consistent search volumes with no discernible seasonal spikes.</p><img
                                                 src="https://pharmeasy.in/blog/dengue/PE_DengueStudy_GoogleSearchTrendsforDengue.webp"
                                                 alt="Google search trends for dengue over time"
-                                                class="w-full max-w-4xl mx-auto rounded-lg shadow-medium">
+                                                class="w-full max-w-4xl mx-auto rounded-lg shadow-medium zoomable-image">
                                         </div>
                                     </div>
 
@@ -7010,6 +7251,64 @@
                         </div>
                     </div>
                 </section>
+
+
+                <section class="referrences-section" class="min-h-screen flex items-center py-20 bg-gradient-primary text-white">
+                    <div class="referrences-header">
+                        <h2 class="references-title badge text-4xl md:text-5xl font-bold mb-6" style="margin-top: -20px;">References</h2>
+                    </div>
+                    <div class="references-card container mx-auto px-6 lg:px-12 max-w-6xl mx-auto">
+                        
+                        <div class="references-card-content references-prose">
+                            <ol
+                                style="list-style-type: decimal; padding-left: 20px; font-size: 0.9rem; line-height: 1.8; color: #5f6f7b;">
+                                <li id="ref1" style="margin-bottom: 1rem;">KAPGATE PS STUDENT, AURASE SB STUDENT, PIMPALKAR S
+                                    STUDENT, GARG VR GUIDE. THE COMPREHENSIVE REVIEW OF PUMPKIN SEEDS: A REVIEW.
+                                    International Journal of Creative Research Thoughts (IJCRT) [Internet]. 2024
+                                    Feb;e226–7. Available from: <a href="https://www.ijcrt.org/papers/IJCRT2403514.pdf"
+                                        target="_blank" rel="noopener noreferrer"
+                                        style="color: #059669;">https://www.ijcrt.org/papers/IJCRT2403514.pdf</a>
+                                </li>
+                                <li id="ref2" style="margin-bottom: 1rem;">Batool M, Ali Nawaz Ranjha MM, Roobab U, Manzoor MF,
+                                    Farooq U, Nadeem HR, et al. Nutritional value, phytochemical potential, and
+                                    therapeutic benefits of pumpkin (Cucurbita sp.). Plants [Internet].
+                                    2022;11(11):1394. Available from: <a href="https://doi.org/10.3390/plants11111394"
+                                        target="_blank" rel="noopener noreferrer"
+                                        style="color: #059669;">https://doi.org/10.3390/plants11111394</a>
+                                </li>
+                                <li id="ref3" style="margin-bottom: 1rem;">Seeds, pumpkin and squash seed kernels, roasted,
+                                    without salt – USDA FoodData Central Food Details [Internet]. [cited 2025 Feb 3];
+                                    Available from: <a href="https://fdc.nal.usda.gov/food-details/170557/nutrients"
+                                        target="_blank" rel="noopener noreferrer"
+                                        style="color: #059669;">https://fdc.nal.usda.gov/food-details/170557/nutrients</a>
+                                </li>
+                                <li id="ref4" style="margin-bottom: 1rem;">MedlinePlus. Fiber. MedlinePlus Medical Encyclopedia.
+                                    2023 [cited 2025 Feb 25]. Available from: <a
+                                        href="https://medlineplus.gov/ency/article/002470.htm" target="_blank"
+                                        rel="noopener noreferrer"
+                                        style="color: #059669;">https://medlineplus.gov/ency/article/002470.htm</a>
+                                </li>
+                                <li id="ref5" style="margin-bottom: 1rem;">Fallah A, Mohammad-Hasani A, Colagar AH. Zinc is an
+                                    essential element for male fertility: A review of Zn roles in men’s health,
+                                    germination, sperm quality, and fertilization. PubMed Central. 2018 [cited 2025 Feb
+                                    25]. Available from: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6010824/"
+                                        target="_blank" rel="noopener noreferrer"
+                                        style="color: #059669;">https://pmc.ncbi.nlm.nih.gov/articles/PMC6010824/</a>
+                                </li>
+                                <li id="ref6" style="margin-bottom: 1rem;">Batool M, Ranjha MMAN, Roobab U, Manzoor MF, Farooq U,
+                                    Nadeem HR, et al. Nutritional value, phytochemical potential, and therapeutic
+                                    benefits of pumpkin (Cucurbita sp.). Plants. 2022 May 24 [cited 2025 Feb 25].
+                                    Available from: <a href="https://www.mdpi.com/2223-7747/11/11/1394" target="_blank"
+                                        rel="noopener noreferrer"
+                                        style="color: #059669;">https://www.mdpi.com/2223-7747/11/11/1394</a>
+                                </li>
+                            
+                            </ol>
+                        </div>
+                    </div>
+                    <p class="references-card-content references-prose" style=" margin-top: -25px; font-style: italic; font-size: small;">Disclaimer: This article is based on data patterns observed from dengue testing conducted by PharmEasy Labs during the period of April 2022 to December 2024. The insights presented are derived solely from PharmEasy’s internal data and may not be representative of broader national or regional trends. This content is intended for general informational purposes only and should not be construed as medical advice.</p>
+                </section>
+
                 <footer class="main-footer">
                     <div class="footer-content">
                         <div class="footer-grid">
@@ -7183,6 +7482,91 @@
                 goToSlide(0);
             });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('imageModal');
+  const zoomedImage = document.getElementById('zoomedImage');
+  const closeButton = document.querySelector('.close-button');
+  const shareOptions = document.getElementById('shareOptions');
+
+  // Get all images with the 'zoomable-image' class
+  const images = document.querySelectorAll('.zoomable-image');
+
+  images.forEach(image => {
+    image.addEventListener('click', () => {
+      modal.style.display = 'block';
+      zoomedImage.src = image.src; // Set the source of the zoomed image
+      zoomedImage.alt = image.alt; // Set alt text for accessibility
+
+      // Clear previous share buttons and create new ones
+      shareOptions.innerHTML = '';
+      createShareButtons(image.src, image.alt, shareOptions);
+    });
+  });
+
+  // When the user clicks on <span> (x), close the modal
+  closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  // When the user clicks anywhere outside of the image, close the modal
+  window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+
+function createShareButtons(imageUrl, imageAlt, containerElement) {
+  const pageUrl = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(document.title);
+  const description = encodeURIComponent(imageAlt || 'Check out this image!');
+
+  // Function to create a share link with an icon
+  function createIconLink(url, iconClass, ariaLabel) {
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
+  link.classList.add('share-icon'); // This is a single class, so it's fine
+
+  const icon = document.createElement('i');
+  // CORRECTED LINE: Split the iconClass string by space and add each token individually
+  icon.classList.add(...iconClass.split(' '));
+  link.appendChild(icon);
+  link.setAttribute('aria-label', ariaLabel);
+  return link;
+ }
+
+  // Facebook
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&picture=${encodeURIComponent(imageUrl)}`;
+  const facebookIcon = createIconLink(facebookShareUrl, 'fab fa-facebook', 'Share on Facebook');
+  containerElement.appendChild(facebookIcon);
+
+  // Twitter
+  const twitterShareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${description}`;
+const twitterIcon = createIconLink(twitterShareUrl, 'fab fa-x-twitter', 'Share on X (formerly Twitter)'); // <--- UPDATED LINE
+containerElement.appendChild(twitterIcon);
+
+  // LinkedIn
+  const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+  const linkedinIcon = createIconLink(linkedinShareUrl, 'fab fa-linkedin', 'Share on LinkedIn');
+  containerElement.appendChild(linkedinIcon);
+
+  // Pinterest
+  const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${pageUrl}&media=${encodeURIComponent(imageUrl)}&description=${description}`;
+  const pinterestIcon = createIconLink(pinterestShareUrl, 'fab fa-pinterest', 'Pin on Pinterest');
+  containerElement.appendChild(pinterestIcon);
+
+  // WhatsApp (uses a different URL scheme for sharing)
+  const whatsappShareUrl = `https://wa.me/?text=${description} ${pageUrl}`;
+  const whatsappIcon = createIconLink(whatsappShareUrl, 'fab fa-whatsapp', 'Share on WhatsApp');
+  containerElement.appendChild(whatsappIcon);
+
+  // Reddit
+  const redditShareUrl = `https://www.reddit.com/submit?url=${pageUrl}&title=${description}`;
+  const redditIcon = createIconLink(redditShareUrl, 'fab fa-reddit', 'Share on Reddit');
+  containerElement.appendChild(redditIcon);
+ }
     </script>
 </body>
 
